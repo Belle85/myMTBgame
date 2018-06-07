@@ -34,7 +34,8 @@ $(document).ready(function () {
             displayPerformances();
         }
         else if (gamePerformance > goalPerformance) {
-            console.log("This is a loss")
+            console.log("This is a loss");
+            alert("Too bad, you burnt out!");
             losses++;
             displayPerformances();
             startGame();
