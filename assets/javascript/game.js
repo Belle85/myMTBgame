@@ -1,30 +1,70 @@
-// START THE GAME, DECLARE VARIABLES AND ASSIGN VALUES
-
 $(document).ready(function () {
+
 
     var goalPerformance = 0;
     var gamePerformance = 0;
     var wins = 0;
     var losses = 0;
-    var modifier = [2, 5, 9, 14];
     var bikeParts = {
-        frame: {
-            value: 0,
-        },
-        derailleur: {
-            value: 0,
-        },
-        fork: {
-            value: 0,
-        },
+        frame: 0,
+        fork: 0,
+        derailleur: 0,
     }
 
+    function displayPerformances() {
+        $("#goalPerformance").html(goalPerformance);
+        $("#gamePerformance").html(gamePerformance);
+        $("#wins").html(wins);
+        $("#losses").html(losses);
+    };
 
-// FUNCTION THAT DISPLAY PERFORMANCES
-function displayPerformances(){
-    $("#goalPerformance").html(goalPerformance);
-    $("#gamePerformance").html(gamePerformance);
-    $("#wins").html(wins);
-    $("#losses").html(losses);
-}
+    function startGame() {
+        goalPerformance = Math.floor(Math.random() * 101) + 19;
+        gamePerformance = 0;
+        bikeParts.frame = Math.floor(Math.random() * 12) + 1;
+        bikeParts.fork = Math.floor(Math.random() * 12) + 1;
+        bikeParts.derailleur = Math.floor(Math.random() * 12) + 1;
+    }
 
+    function checkGameOver() {
+        if (gamePerformance === goalPerformance) {
+            wins++;
+            displayPerformances();
+            startGame();
+            displayPerformances();
+        }
+        else if (gamePerformance > goalPerformance) {
+            console.log("This is a loss")
+            losses++;
+            displayPerformances();
+            startGame();
+            displayPerformances();
+        }
+    }
+
+    $(".bikeParts").on("click", function () {
+        console.log(bikeParts.derailleur);
+        var id = this.id;
+        if (id === "derailleur") {
+            gamePerformance += bikeParts.derailleur;
+            $("#gamePerformance").html(gamePerformance);
+            checkGameOver();
+        }
+        else if (id === "fork") {
+            gamePerformance += bikeParts.fork;
+            $("#gamePerformance").html(gamePerformance);
+            checkGameOver();
+        }
+        else if (id === "frame") {
+            gamePerformance += bikeParts.frame;
+            $("#gamePerformance").html(gamePerformance);
+            checkGameOver();
+        }
+        else {
+            alert("ERROR");
+            console.log(id + this.id)
+        }
+
+    });
+
+});
