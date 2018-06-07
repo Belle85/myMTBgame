@@ -1,7 +1,19 @@
 body{
     background: url(../images/MTB-Background.jpg) no-repeat center center fixed;
 }
+
 header{
     width: 700px;
-    margin: 200px auto 200px auto;
+    margin: 150px auto 250px auto;
+}
+
+.card{
+    margin: auto;
+    margin-bottom: 200px;
+}
+
+img{
+    height: 150px;
+    width: 150px;
+    margin: 10px;
 }
