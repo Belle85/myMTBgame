@@ -12,8 +12,13 @@ header{
     margin-bottom: 200px;
 }
 
+h4{
+    text-align: center;
+    line-height: 30px;
+}
+
 img{
     height: 150px;
     width: 150px;
-    margin: 10px;
+    margin-right: 15px;
 }
