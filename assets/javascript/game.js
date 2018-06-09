@@ -11,6 +11,8 @@ $(document).ready(function () {
         derailleur: 0,
     }
 
+    
+
     function displayPerformances() {
         $("#goalPerformance").html(goalPerformance);
         $("#gamePerformance").html(gamePerformance);
@@ -19,16 +21,24 @@ $(document).ready(function () {
     };
 
     function startGame() {
+        alert("Are you ready?!");
         goalPerformance = Math.floor(Math.random() * 101) + 19;
         gamePerformance = 0;
         bikeParts.frame = Math.floor(Math.random() * 12) + 1;
         bikeParts.fork = Math.floor(Math.random() * 12) + 1;
         bikeParts.derailleur = Math.floor(Math.random() * 12) + 1;
     }
+    
 
     function checkGameOver() {
-        if (gamePerformance === goalPerformance) {
+        if (gamePerformance === 0 && goalPerformance === 0 && wins === 0){
+            displayPerformances();
+            startGame();
+            displayPerformances();
+        }
+         if (gamePerformance === goalPerformance) {
             wins++;
+            alert("Good job! Your performance was on point!")
             displayPerformances();
             startGame();
             displayPerformances();
